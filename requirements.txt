@@ -1,0 +1,2 @@
+faunadb==3.0.0
+requests==2.24.0
