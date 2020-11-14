@@ -1,0 +1,23 @@
+{
+  "data": {
+    "author_id": "704734597683097601",
+    "id": "1327711395962445825",
+    "lang": "en",
+    "text": "STOCK MARKET MILLIONAIRE 5 YEARS 500%"
+  },
+  "includes": {
+    "users": [
+      {
+        "id": "704734597683097601",
+        "name": "pikainvestor",
+        "username": "pikainvestor"
+      }
+    ]
+  },
+  "matching_rules": [
+    {
+      "id": 1327711335388377090,
+      "tag": "Test Tag"
+    }
+  ]
+}
