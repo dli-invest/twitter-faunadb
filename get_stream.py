@@ -50,7 +50,7 @@ def set_rules(headers, delete, bearer_token):
     # dollar signs do not work at the moment
     sample_rules = [
         {"value": "@ThreeDCap", "tag": "IDK - 3D Capital"},
-        {"value": "@sheldonstash OR @PEAK_fintech", "tag": "investment firms"},
+        {"value": "@sheldonstash", "tag": "investment firms"},
         {
             "value": "GET RICH FAST TESTING TWITTER STREAM OR @pikainvestor",
             "tag": "Test Tag",
@@ -67,6 +67,9 @@ def set_rules(headers, delete, bearer_token):
         },
         {
             "value": "@AGORACOM", "tag": "Agoracom"
+        },
+        {
+            "value": "@elonmusk", "tag": "elon musk"
         }
     ]
     payload = {"add": sample_rules}
