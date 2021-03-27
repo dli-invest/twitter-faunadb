@@ -2,7 +2,7 @@ import requests
 import os
 import json
 from webhook import post_webhook_content, format_tweet_for_discord
-from fauna_driver import FaunaWrapper
+# from fauna_driver import FaunaWrapper
 
 # To set your enviornment variables in your terminal run the following line:
 # export 'BEARER_TOKEN'='<your_bearer_token>'
@@ -55,6 +55,10 @@ def set_rules(headers, delete, bearer_token):
             "value": "GET RICH FAST TESTING TWITTER STREAM OR @pikainvestor",
             "tag": "Test Tag",
         },
+        {
+            "value": "pikainvestor",
+            "tag": "Test Tag",
+        }
     ]
     payload = {"add": sample_rules}
     response = requests.post(
@@ -70,7 +74,7 @@ def set_rules(headers, delete, bearer_token):
 
 
 def get_stream(headers, set, bearer_token):
-    db_client = FaunaWrapper()
+    # db_client = FaunaWrapper()
     tweet_fields = "tweet.fields=lang,author_id,in_reply_to_user_id"
     expansions = "expansions=author_id"
     url = "https://api.twitter.com/2/tweets/search/stream?{}&{}".format(
@@ -103,7 +107,7 @@ def get_stream(headers, set, bearer_token):
                     embeds = format_tweet_for_discord(json_response)
                     post_webhook_content(embeds=embeds)
                     # Add data faunadb
-                    db_client.create_document_in_collection(json_response)
+                    # db_client.create_document_in_collection(json_response)
 
         except Exception as e:
             print(e)

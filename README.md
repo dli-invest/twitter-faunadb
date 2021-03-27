@@ -7,3 +7,9 @@ Expects
 * FAUNA_KEY - access key to fauna db
 * BEARER_TOKEN - twitter bearer token
 * DISCORD_WEBHOOK - discord webhook
+
+To run the server use.
+
+```
+uvicorn main:app --reload
+```
