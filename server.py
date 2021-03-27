@@ -35,5 +35,35 @@ for var in MANDATORY_ENV_VARS:
     if var not in os.environ:
         raise EnvironmentError("Failed because {} is not set.".format(var))
 
-start_stream()
+
+
+import threading
+import time
+
+## see http://sebastiandahlgren.se/2014/06/27/running-a-method-as-a-background-thread-in-python/
+
+# should be in its own file, but whatever side project here
+class ThreadingExample(object):
+    """ Threading example class
+    The run() method will be started and it will run in the background
+    until the application exits.
+    """
+
+    def __init__(self, interval=1):
+        """ Constructor
+        :type interval: int
+        :param interval: Check interval, in seconds
+        """
+        self.interval = interval
+
+        thread = threading.Thread(target=self.run, args=())
+        thread.daemon = True                            # Daemonize thread
+        thread.start()                                  # Start the execution
+
+    def run(self):
+        """ Method that runs forever """
+        start_stream()
+
+example = ThreadingExample()
+
 app.run(host='0.0.0.0', port=8080)
