@@ -7,7 +7,7 @@ from operator import itemgetter
 def format_tweet_for_discord(stream_data: dict):
     try:
         # data, matching_rules
-        data, matching_rules = itemgetter("data", "matching_rules")(stream_data)
+        data, matching_rules, includes = itemgetter("data", "matching_rules", "includes")(stream_data)
         # figure out matching rules in v2
         embeds = []
         id, author_id, text = itemgetter("id", "author_id", "text")(data)
@@ -15,6 +15,13 @@ def format_tweet_for_discord(stream_data: dict):
             text = text[0:2000]
 
         title = " ,".join([str(rule.get("tag")) for rule in matching_rules])
+
+        user = None
+        try:
+            users = itemgetter("users")(includes)
+            user = itemgetter("username")(users[0])
+        except Exception as e:
+            print(e)
         # figure out how to output all matching tags somehow
         embed = {
             "title": title,
@@ -22,6 +29,7 @@ def format_tweet_for_discord(stream_data: dict):
             "author": {
                 "name": f"{id} - {author_id}",
             },
+            "url": f"https://twitter.com/{user}/status/{id}"
         }
         embeds.append(embed)
         return embeds

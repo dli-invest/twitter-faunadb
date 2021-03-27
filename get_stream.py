@@ -61,6 +61,12 @@ def set_rules(headers, delete, bearer_token):
         },
         {
             "value": "@PEAK_Fintech", "tag": "Peak Fintech"
+        },
+        {
+            "value": "@BeeVTech", "tag": "Bee Vector"
+        },
+        {
+            "value": "@AGORACOM", "tag": "Agoracom"
         }
     ]
     payload = {"add": sample_rules}
