@@ -28,6 +28,13 @@ def index():
 def read_root():
     return {"Hello": "World"}
 
+@app.route("/restart-stream")
+def restart_stream():
+    example = ThreadingExample()
+    print(example)
+    return {
+        "status": "restarted"
+    }
 
 MANDATORY_ENV_VARS = ["DISCORD_WEBHOOK", "FAUNA_KEY", "BEARER_TOKEN"]
 
